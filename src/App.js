@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import HomeLoginScreen from './screens/HomeLoginScreen'
-import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles'
+import MyEvents from './screens/MyEvents'
+//import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles'
 
-const theme = createMuiTheme({
-    
-})
 
 class App extends Component {
+    state = {
+        user: {}
+    }
     render() {
-        return (
-            <p>iu</p>
-        );
+        if (this.state.user) {
+            return (<MyEvents />)
+        } else {
+            return (<HomeLoginScreen />)
+        }
     }
 }
 
