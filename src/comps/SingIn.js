@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -12,6 +12,7 @@ import LockIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import { renderComponent } from 'recompose';
 
 const styles = theme => ({
   layout: {
@@ -45,50 +46,89 @@ const styles = theme => ({
   },
 });
 
-function SignIn(props) {
-  const { classes } = props;
+function onLoginPress(event) {
+    console.log(event)
+}
 
-  return (
-    <React.Fragment>
-      <CssBaseline />
-      <main className={classes.layout}>
-        <Paper className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockIcon />
-          </Avatar>
-          <Typography variant="headline">Login</Typography>
-          <form className={classes.form}>
-            <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="email">Email</InputLabel>
-              <Input id="email" name="email" autoComplete="email" autoFocus />
-            </FormControl>
-            <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="password">Senha</InputLabel>
-              <Input
-                name="password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-            </FormControl>
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Manter conectado"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="raised"
-              color="primary"
-              className={classes.submit}
-            >
-              Entrar
-            </Button>
-          </form>
-        </Paper>
-      </main>
-    </React.Fragment>
-  );
+
+
+class SignIn extends Component {
+
+    state = {
+        name: "",
+        password: "",
+    }
+    
+    onLoginPress = (event) => {
+        this.props.onLogin(this.state)
+    }
+
+    handleNameChange = (event) => {
+        this.setState({name: event.target.value})
+    }
+
+    handlePassChange = (event) => {
+        this.setState({password: event.target.value})
+    }
+
+    render() {
+        const { classes } = this.props;
+        return (
+            <React.Fragment>
+            <CssBaseline />
+            <main className={classes.layout}>
+                <Paper className={classes.paper}>
+                <Avatar className={classes.avatar}>
+                    <LockIcon />
+                </Avatar>
+                <Typography variant="headline">Login</Typography>
+                <form className={classes.form}>
+                    <FormControl margin="normal" required fullWidth>
+                    <InputLabel htmlFor="email">Email</InputLabel>
+                    
+                    <Input 
+                        id="email" 
+                        name="email" 
+                        autoComplete="email" 
+                        autoFocus 
+                        value={this.state.name}
+                        onChange={this.handleNameChange}
+                    />
+                    
+                    </FormControl>
+                    <FormControl margin="normal" required fullWidth>
+                    <InputLabel htmlFor="password">Senha</InputLabel>
+                    
+                    <Input
+                        name="password"
+                        type="password"
+                        id="password"
+                        autoComplete="current-password"
+                        value={this.state.password}
+                        onChange={this.handlePassChange}
+                    />
+
+                    </FormControl>
+                    <FormControlLabel
+                    control={<Checkbox value="remember" color="primary" />}
+                    label="Manter conectado"
+                    />
+                    <Button
+                    
+                    fullWidth
+                    variant="raised"
+                    color="primary"
+                    className={classes.submit}
+                    onClick={this.onLoginPress}
+                    >
+                    Entrar
+                    </Button>
+                </form>
+                </Paper>
+            </main>
+            </React.Fragment>
+        );
+    }
 }
 
 SignIn.propTypes = {

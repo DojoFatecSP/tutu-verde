@@ -44,7 +44,20 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDapSRJ66EDkWqiBToKMVcpBIX27M9aZVo",
+        authDomain: "tutu-verde.firebaseapp.com",
+        databaseURL: "https://tutu-verde.firebaseio.com",
+        projectId: "tutu-verde",
+        storageBucket: "tutu-verde.appspot.com",
+        messagingSenderId: "553212222816"
+      };
+      window.firebase = firebase;
+      firebase.initializeApp(config);
+    </script>
     <script src="assets/web/assets/jquery/jquery.min.js"></script>
     <script src="assets/popper/popper.min.js"></script>
     <script src="assets/tether/tether.min.js"></script>

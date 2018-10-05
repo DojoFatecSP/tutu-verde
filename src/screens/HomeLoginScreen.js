@@ -8,7 +8,7 @@ class HomeLoginScreen extends Component {
     render() {
         return (
             <div>
-                <Weelcome />
+                <Weelcome onLogin={this.props.onLogin}/>
                 <FeaturesDescriptions />
                 <Footer />
             </div>

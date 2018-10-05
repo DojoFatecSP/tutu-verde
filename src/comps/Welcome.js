@@ -30,7 +30,7 @@ class Welcome extends Component {
                     </div>
                 </div>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                    <SingIn />
+                    <SingIn onLogin={this.props.onLogin}/>
                 </Modal>
 
             </section>

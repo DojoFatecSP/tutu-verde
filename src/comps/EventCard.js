@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, Col } from 'reactstrap';
+    CardTitle, Button, Col } from 'reactstrap';
+import {Link} from 'react-router-dom';
 
 const EventCard = (props) => (
     <div>
@@ -10,7 +11,7 @@ const EventCard = (props) => (
                 <CardBody>
                     <CardTitle>{props.name}</CardTitle>
                     <CardText>{props.description}</CardText>
-                    <Button>Detalhes</Button>
+                    <Link to={`/details/${props.name}`} ><Button>Detalhes</Button></Link>
                 </CardBody>
             </Card>
         </Col>

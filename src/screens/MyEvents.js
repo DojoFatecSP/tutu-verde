@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withStyles } from '@material-ui/core/styles';
 import EventCard from '../comps/EventCard'
 import ButtonAppBar from '../comps/ButtonAppBar'
 
@@ -7,14 +8,23 @@ class MyEvents extends Component {
         events:[{name: 'Evento A', description: 'bla bla With supporting text below as a natural lead-in to additional content.'},{name: 'Evento B', description: 'ble ble With supporting text below as a natural lead-in to additional content.'}]
     }
     render() {
+        const { classes } = this.props;
         return(
             <div>
-                <ButtonAppBar title="Meus Eventos" />
-                {this.state.events.map(event => <EventCard {...event} />)}
+                <ButtonAppBar title="Meus Eventos" onLogout={this.props.onLogout}/>
+                <div className={classes.EventsCounteiner}>
+                    {this.state.events.map(event => <EventCard {...event} />)}
+                </div>
                 <br />
             </div>
         )
     }
 }
 
-export default MyEvents
+const styles = {
+    EventsCounteiner: {
+        marginTop: 70,
+    },
+  };
+
+export default withStyles(styles)(MyEvents);
