@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withStyles } from '@material-ui/core/styles';
+import {CardDeck} from 'reactstrap'
 import EventCard from '../comps/EventCard'
 import ButtonAppBar from '../comps/ButtonAppBar'
 
@@ -12,9 +13,9 @@ class MyEvents extends Component {
         return(
             <div>
                 <ButtonAppBar title="Meus Eventos" onLogout={this.props.onLogout}/>
-                <div className={classes.EventsCounteiner}>
+                <CardDeck className={classes.EventsCounteiner}>
                     {this.state.events.map(event => <EventCard {...event} />)}
-                </div>
+                </CardDeck>
                 <br />
             </div>
         )

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Modal} from 'reactstrap'
+import Button from '@material-ui/core/Button';
 import SingIn from '../comps/SingIn'
 
 class Welcome extends Component {
@@ -25,7 +26,7 @@ class Welcome extends Component {
                                 TUTU VERDE</h1>
                             
                             <p className="mbr-text pb-3 mbr-fonts-style display-5">O melhor modo de organizar os seus eventos</p>
-                            <div className="mbr-section-btn" onClick={this.showModalLogin}><a className="btn btn-md btn-primary" href="#">Comece Agora</a></div>
+                            <Button onClick={this.showModalLogin} variant="contained" color="primary" size="large">Comece Agora</Button>
                         </div>
                     </div>
                 </div>

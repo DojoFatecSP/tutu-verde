@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import HomeLoginScreen from './screens/HomeLoginScreen'
 import MyEvents from './screens/MyEvents'
 import EventDetails from './screens/EventDetails'
+import Menu from './screens/Menu'
 import {
     BrowserRouter as Router,
     Route,
-    Link
+    Switch,
+    Redirect 
   } from 'react-router-dom'
 //import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles'
 
@@ -28,10 +30,12 @@ class App extends Component {
         if (this.state.user) {
             return (
                 <Router>
-                    <div>
-                        <Route exact path="/" render={ (props) => <MyEvents {...props} onLogout={this.handleUserLogout} />} />
+                    <Switch>
+                        <Route exact path="/" render={ (props) => <Redirect to="/menu" /> } />
+                        <Route path="/menu" render={ (props) => <Menu />} />
+                        <Route path="/myevents" render={ (props) => <MyEvents {...props} onLogout={this.handleUserLogout} />} />
                         <Route path="/details/:event" render={ (props) => <EventDetails {...props} onLogout={this.handleUserLogout} />} />
-                    </div>
+                    </Switch>
                 </Router>
             )
         } else {
